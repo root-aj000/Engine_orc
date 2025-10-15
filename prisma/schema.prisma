@@ -1,0 +1,47 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Tenant {
+  id        String     @id @default(cuid())
+  name      String
+  config    Json?
+  createdAt DateTime   @default(now())
+  workflows Workflow[]
+}
+
+model Workflow {
+  id         String     @id @default(cuid())
+  tenantId   String
+  name       String
+  definition Json
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+  executions Execution[]
+
+  tenant Tenant @relation(fields: [tenantId], references: [id])
+  @@index([tenantId])
+}
+
+model Execution {
+  id         String   @id @default(cuid())
+  workflowId String
+  tenantId   String
+  status     String
+  input      Json?
+  output     Json?
+  error      Json?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  workflow Workflow @relation(fields: [workflowId], references: [id])
+
+  @@index([workflowId])
+  @@index([tenantId])
+}
+
