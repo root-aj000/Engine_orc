@@ -1,0 +1,54 @@
+{
+  "name": "orc",
+  "version": "1.0.0",
+  "description": "none",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:deploy": "prisma migrate deploy",
+    "validate-engine": "ts-node scripts/validate-engine.ts",
+    "generate-md": "node scripts/script.js"
+    
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/root-aj000/Engine_orc.git"
+  },
+  "author": "aj__000 && T_8137",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/root-aj000/Engine_orc/issues"
+  },
+  "homepage": "https://github.com/root-aj000/Engine_orc#readme",
+  "dependencies": {
+    "@prisma/client": "^6.17.1",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/supertest": "^6.0.3",
+    "axios": "^1.12.2",
+    "bullmq": "^5.61.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "helmet": "^8.1.0",
+    "pino": "^10.0.0",
+    "pino-http": "^11.0.0",
+    "prisma": "^6.17.1",
+    "supertest": "^7.1.4",
+    "vitest": "^3.2.4",
+    "vm2": "^3.9.19",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.7.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
